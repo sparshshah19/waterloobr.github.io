@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Waterloo Business Review</title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <!-- sets base directory to top level -->
     <base href="/" /> 
     <link rel="manifest" href="site.webmanifest">
@@ -33,7 +33,40 @@
     <script type="text/javascript" src="javascript/core/magazine.js"></script>
     <link type="text/css" rel="stylesheet" href="css/magazine.css"></link>
 
-</head>
+    <style>
+    /* Prevent unwanted mobile zoom and touch behaviors */
+    .magazine-viewport, .magazine {
+        touch-action: manipulation;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        user-select: none;
+    }
+    
+    /* Prevent double-tap zoom */
+    .magazine *, .magazine-viewport * {
+        touch-action: manipulation;
+    }
+    
+    /* Mobile responsive improvements */
+    @media screen and (max-width: 768px) {
+        #all {
+            overflow-x: hidden !important;
+        }
+        
+        .magazine-viewport .container {
+            position: relative !important;
+            width: 100% !important;
+            height: auto !important;
+            margin: 20px auto !important;
+        }
+        
+        .magazine-viewport .magazine {
+            width: 100% !important;
+            height: auto !important;
+            position: relative !important;
+        }
+    }
+    </style></head>
 <body>
     <!-- ? Preloader Start -->
     <div id="preloader-active">
@@ -452,6 +485,7 @@
 
         </script>
         		<!-- Magazine Viewport -->
+		<div id="all" style="display: none;">
 		<div class="magazine-viewport">
 			<div class="container">
 				<div class="magazine">
@@ -462,7 +496,7 @@
 				</div>
 			</div>
         </div>
-    <footer>
+	</div>    <footer>
         <!-- footer-bottom area -->
         <div class="footer-bottom-area">
             <div class="container">
